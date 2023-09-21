@@ -15,7 +15,7 @@ for record in records:
     print()
 print(" -- DISPLAYING STUDENTS DOCUMENTS FROM find_one() QUERY -- ")
 print ()
-doc = students.find_one({"student_id": "1007"})
+doc = students.find_one({"student_id": "1008"})
 print("Student ID: " + str(record["student_id"]))
 print("First Name: " + str(record["first_name"]))
 print("Last Name: " + str(record["last_name"]))
