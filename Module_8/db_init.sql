@@ -1,11 +1,16 @@
 -- create pysports_user and grant them all privileges to the pysports database 
 CREATE USER 'pysports_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MySQLEffort22!';
 
+-- drop test user if exists 
+DROP USER IF EXISTS 'pysports_user'@'localhost';
+
 -- grant all privileges to the pysports database to user pysports_user on localhost 
 GRANT ALL PRIVILEGES ON pysports.* TO'pysports_user'@'localhost';
 
--- drop test user if exists 
-DROP USER IF EXISTS 'pysports_user'@'localhost';
+
+-- drop tables if they are present
+DROP TABLE IF EXISTS player;
+DROP TABLE IF EXISTS team;
 
 -- create the team table 
 CREATE TABLE team (
@@ -34,13 +39,21 @@ INSERT INTO team(team_name, mascot)
 INSERT INTO team(team_name, mascot)
     VALUES('Team Sauron', 'Then Heron');
 
-
--- drop tables if they are present
-DROP TABLE IF EXISTS player;
-
 -- insert player records 
 INSERT INTO player(first_name, last_name, team_id) 
-    VALUES('Messi', 'Romeo', (SELECT team_id FROM team WHERE team_name = 'Team Gandalf'));
+    VALUES('Thorin', 'Oakenshield', (SELECT team_id FROM team WHERE team_name = 'Team Gandalf'));
+
+INSERT INTO player(first_name, last_name, team_id)
+    VALUES('Bilbo', 'Baggins', (SELECT team_id FROM team WHERE team_name = 'Team Gandalf'));
+
+INSERT INTO player(first_name, last_name, team_id)
+    VALUES('Frodo', 'Baggins', (SELECT team_id FROM team WHERE team_name = 'Team Gandalf'));
 
 INSERT INTO player(first_name, last_name, team_id) 
-    VALUES('Sam', 'Williams', (SELECT team_id FROM team WHERE team_name = 'Team Sauron'));
+    VALUES('Saruman', 'The White', (SELECT team_id FROM team WHERE team_name = 'Team Sauron'));
+
+INSERT INTO player(first_name, last_name, team_id)
+    VALUES('Angmar', 'Witch-king', (SELECT team_id FROM team WHERE team_name = 'Team Sauron'));
+
+INSERT INTO player(first_name, last_name, team_id)
+    VALUES('Azog', 'The Defiler', (SELECT team_id FROM team WHERE team_name = 'Team Sauron'));
