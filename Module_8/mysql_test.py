@@ -2,7 +2,10 @@ import mysql.connector
 from mysql.connector import errorcode
 
 config = {
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0e988d740331d9a1549ab47d194241430b0083d
     "user": "root",
     "password": "ChangeMe21!",
     "host": "127.0.0.1",
