@@ -1,13 +1,10 @@
 import mysql.connector
 from mysql.connector import errorcode
+
 config = {
-<<<<<<< HEAD
-    "user": "root21",
-    "password": "ChangeMe21",
-=======
+
     "user": "root",
     "password": "ChangeMe21!",
->>>>>>> c19b6c8e92d95cd8cafdf9de0fc14a8e4fdb687a
     "host": "127.0.0.1",
     "database": "pysports",
     "raise_on_Warnings": True
