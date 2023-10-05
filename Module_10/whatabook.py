@@ -25,12 +25,23 @@ def display_books():
         print("Book Id: = ", row[0], )
         print("Title: = ", row[1])
         print("Author:  = ", row[2])
-        print("Publication Date: = ", row[3], "\n")
-       
+        print("Publication Date: = ", row[3], "\n")    
     cursor.close()
     sys.exit()
     db.exit()
 # Definding books
+def View_Store_Locations():
+    db = mysql.connector.connect(**config) 
+    cursor = db.cursor()
+    query = "SELECT locale FROM store"
+    cursor.execute(query)
+    store_info = cursor.fetchone()
+    for location in store_info:
+        print()
+        print(f" locale: {store_info[0]}")
+        print()
+    cursor.close()
+
 def show_book_info(book_id):
     db = mysql.connector.connect(**config) 
     cursor = db.cursor()
@@ -50,18 +61,23 @@ def main_menu():
         print("**** Welcome to Whatabook Book****")
         print ()
         print("1. Show Available Books")
-        print("2. Show Book Information")
-        print("3. Exit")
+        print("2. Show Store Location")
+        print("3. My Account")
+        print("4. Exit")
         print()
         User_choice = input("Please Enter your choice: ")
         
         if User_choice == "1":
             display_books()
         elif User_choice == "2":
-            book_id = int(input("Enter the book ID: "))
-            show_book_info(book_id)
+            View_Store_Locations()
         elif User_choice == "3":
+            book_id = int(input("Enter the User ID: "))
+            show_book_info(book_id)
+        elif User_choice == "4":
+            print()
             print("Thanks for your time! Goodbye!")
+            print()
             break
         else:
             print("Invalid choice. Please try again.")
